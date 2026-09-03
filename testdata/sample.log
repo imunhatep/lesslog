@@ -1,0 +1,30 @@
+{"level":"info","time":"2026-09-02T13:41:12Z","message":"logging level: trace"}
+{"level":"debug","user":"svc-api","time":"2026-09-02T13:41:12Z","message":"authentication: basic auth"}
+{"level":"info","time":"2026-09-02T13:41:12Z","message":"Building default options for provider client session"}
+{"level":"debug","zerolog_global_level":"trace","slog_level":"DEBUG","time":"2026-09-02T13:41:12Z","message":"mapped zerolog level to slog level for provider SDK"}
+{"level":"info","credentials_path":"/etc/provider/credentials","section":"default","retry_max":5,"retry_wait_max":30000,"time":"2026-09-02T13:41:12Z","message":"provider session options"}
+{"level":"info","time":"2026-09-02T13:41:12Z","message":"Initialize provider client"}
+{"level":"debug","time":"2026-09-02T13:41:12Z","message":"[client.New] creating api client with env credentials"}
+{"level":"debug","access_key_id":"EXAMPLEKEYID00000000","time":"2026-09-02T13:41:12Z","message":"[client.New] using static credentials"}
+{"level":"debug","region":"eu-central-1","time":"2026-09-02T13:41:12Z","message":"[client.Assume] assuming role"}
+{"level":"info","providerRateLimit":"3/s","registrarRateLimit":"3/s","dnsRateLimit":"3/s","time":"2026-09-02T13:41:13Z","message":"rate limiters configured"}
+{"level":"info","component":"lock-manager","backend":"etcd","time":"2026-09-02T13:41:13Z","message":"using distributed lock storage"}
+{"level":"info","time":"2026-09-02T13:41:13Z","message":"using default engine"}
+{"level":"info","interval":120000,"probe_timeout":5000,"time":"2026-09-02T13:41:13Z","message":"health: starting background readiness probe loop"}
+{"level":"info","time":"2026-09-02T13:41:13Z","message":"controller: starting full provisioning run"}
+{"level":"info","component":"controller","time":"2026-09-02T13:41:13Z","message":"[Run] starting"}
+{"level":"debug","component":"controller","time":"2026-09-02T13:41:13Z","message":"[Run] running initial API reconciliation"}
+{"level":"info","component":"controller","time":"2026-09-02T13:41:13Z","message":"[Reconcile] reconciling with API"}
+{"level":"trace","component":"api-client","method":"GET","url":"http://api.internal.example/v1/records/bulk-export","hdr.Authorization":"***","hdr.User-Agent":"lesslog-sample/1.0","body":"","time":"2026-09-02T13:41:13Z","message":"sending request"}
+{"level":"warn","component":"controller","attempt":2,"backoff_ms":1500,"time":"2026-09-02T13:41:14Z","message":"retrying bulk export after transient failure"}
+{"level":"error","component":"controller","err":"context deadline exceeded","tags":["provider","dns"],"detail":{"code":504,"retryable":true},"time":"2026-09-02T13:41:19Z","message":"[Reconcile] bulk export failed"}
+{"level":"fatal","component":"controller","time":"2026-09-02T13:41:20Z","message":"giving up: cannot reconcile with API"}
+2026-09-02T13:41:20Z WARN  plain text log line, level detected by word scan
+level=info msg="logfmt line" component=shutdown
+goroutine 1 [running]:
+	main.main()
+panic: runtime error: invalid memory address or nil pointer dereference
+	main.(*Controller).Run(0x14000122000)
+		/src/controller.go:88 +0x1f4
+An error occurred earlier, see above — this line stays uncolored
+{"not_a_log":true,"but_valid":"json"}
